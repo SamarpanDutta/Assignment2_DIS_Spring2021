@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Assignment2_DIS_Spring2021
 {
@@ -325,12 +326,28 @@ namespace Assignment2_DIS_Spring2021
         ///Constraints:
         ///1 <= n <= 231 - 1
         /// </summary>
-
+        private static HashSet<int> store = new HashSet<int>();
         private static bool HappyNumber(int n)
         {
             try
             {
-                //write your code here.
+                store.Add(n);
+                if (n == 1)
+                {
+                    return true;
+                }
+
+                int s = 0;
+                while (n > 0)
+                {
+                    int d = n % 10;
+                    s += Convert.ToInt32(Math.Pow(d, 2));
+                    n = n / 10;
+                }
+                if (!store.Contains(s))
+                {
+                    return HappyNumber(s);
+                }
                 return false;
             }
             catch (Exception)
