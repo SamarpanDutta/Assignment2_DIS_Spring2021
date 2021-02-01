@@ -361,8 +361,24 @@ namespace Assignment2_DIS_Spring2021
         {
             try
             {
-                //write your code here.
-                return 0;
+                int maxp = 0;
+                int sell = prices.Length - 1;
+                int buy = sell - 1;
+
+                while (buy >= 0)
+                {
+                    if (prices[buy] > prices[sell])
+                    {
+                        sell = buy;
+                        buy = sell - 1;
+                    }
+                    else
+                    {
+                        maxp = Math.Max(maxp, prices[sell] - prices[buy]);
+                        buy--;
+                    }
+                }
+                return maxp;
             }
             catch (Exception)
             {
