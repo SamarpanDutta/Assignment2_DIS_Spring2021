@@ -392,12 +392,27 @@ namespace Assignment2_DIS_Spring2021
         ///Hint : Use the concept of Fibonacci series.
         /// </summary>
 
-        private static void Stairs(int steps)
+        private static void Stairs(int n)
         {
             try
             {
-                //write your code here.
-              
+                int output = 0;
+                int a = 1;
+                int b = 1;
+                if (n <= 1)
+                {
+                    output= 1;
+                }
+                for (int i = 2; i <= n; i++)
+                {
+                    a = a + b;
+                    //swap a and b
+                    int temp = a;
+                    a = b;
+                    b = temp;
+                }
+                output = b;
+                Console.WriteLine(output);
             }
             catch (Exception)
             {
