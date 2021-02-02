@@ -131,12 +131,40 @@ namespace Assignment2_DIS_Spring2021
        /// Output: [1,3,12,0,0]
        /// </summary>
        
-        private static void MoveZeroes(int[] ar2)
+        private static void MoveZeroes(int[] nums)
         {
             try
             {
-                //write your code here.
-                
+                int i = 0;
+                int j = 0;
+
+                // find the first occurence of 0
+                while (i < nums.Length && nums[i] != 0)
+                {
+                    i++;
+                }
+                if (i == nums.Length)
+                {
+                    return;
+                }
+                j = i;
+                i = j + 1;
+                while (i < nums.Length)
+                {
+                    if (nums[i] == 0)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        nums[j++] = nums[i++];
+                    }
+                }
+                while (j < nums.Length)
+                {
+                    nums[j++] = 0;
+                }
+
             }
             catch (Exception)
             {
@@ -165,7 +193,26 @@ namespace Assignment2_DIS_Spring2021
         {
             try
             {
-                //write your code here.
+                Dictionary<int, int> h = new Dictionary<int, int>();
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (h.ContainsKey(nums[i]))
+                    {
+                        h[nums[i]] += 1;
+                    }
+                    else
+                    {
+                        h.Add(nums[i], 1);
+                    }
+                }
+
+                Dictionary<int, int>.KeyCollection keyColl = h.Keys;
+                int total = 0;
+                foreach (int s in keyColl)
+                {
+                    total += (h[s] * (h[s] - 1) / 2);
+                }
+                Console.WriteLine(total);
             }
             catch (Exception)
             {
