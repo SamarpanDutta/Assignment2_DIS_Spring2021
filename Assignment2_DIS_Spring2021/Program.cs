@@ -10,6 +10,7 @@ namespace Assignment2_DIS_Spring2021
             //Question1:
             int[] ar1 = { 2, 5, 1, 3, 4, 7 };
             int n1 = 3;
+            Console.WriteLine("Question 1");
             ShuffleArray(ar1, n1);
 
             //Question 2 
@@ -53,7 +54,7 @@ namespace Assignment2_DIS_Spring2021
 
             //Question 7
             Console.WriteLine("Question 7");
-            int[,] scores = { { 1, 91 }, { 1, 92 }, { 2, 93 }, { 2, 97 }, { 1, 60 }, { 2, 77 }, { 1, 65 }, { 1, 87 }, { 1, 100 }, { 2, 100 }, { 2, 76 } };
+            int[,] scores = { { 1, 91 }, { 1, 92 }, { 2, 93 }, { 2, 97 }, { 1, 60 }, { 2, 77 }, { 1, 65 }, { 1, 87 }, { 1, 100 }, { 2, 100 }, { 2, 76 } ,{ 2, 50 } };
             HighFive(scores);
             Console.WriteLine();
 
@@ -119,7 +120,11 @@ namespace Assignment2_DIS_Spring2021
                     result[j++] = nums[i];
                     result[j++] = nums[i + n];
                 }
-                nums = result;
+                for(int i = 0; i < 2 * n; i++)
+                {
+                    Console.Write(result[i] + " ");
+                }
+                Console.Write("\n\n");
             }
             catch (Exception)
             {
@@ -383,12 +388,43 @@ namespace Assignment2_DIS_Spring2021
         {
             try
             {
-                //write your code here.
-                
+                List<int[]> list = new List<int[]>();
+                List<int[]> result = new List<int[]>();
+
+                for(int i = 0; i < items.GetLength(0); i++)
+                {
+                    list.Add(new int[] { items[i, 0], items[i, 1] });
+                }
+                list.Sort((x, y) => { return (x[0] < y[0]) ? -1 : ((x[0] == y[0]) ? ((x[1] <= y[1]) ? 1 : -1) : 1); });
+                foreach(int[] a in list)
+                {
+                    Console.WriteLine("{" + a[0] + " " + a[1] + "}");
+                }
+                int m = list[0][0];
+                int c = 1;
+                int s = list[0][1];
+
+                for(int i = 1; i < list.Count; i++)
+                {
+                    if(list[i][0]==m && c < 5)
+                    {
+                        s += list[i][1];
+                        c += 1;
+                    }
+                    else if(list[i][0]!=m)
+                    {
+                        result.Add(new int[] { m, s });
+                        Console.WriteLine("id=" + m + " highfive=" + s);
+                        m = list[i][0];
+                        c = 1;
+                        s = list[i][1];
+                    }
+                }
+                result.Add(new int[] { m, s });
+                Console.WriteLine("id=" + m + " highfive=" + s);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
