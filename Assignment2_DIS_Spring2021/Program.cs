@@ -255,12 +255,33 @@ namespace Assignment2_DIS_Spring2021
         ///Input : s1 = “ab” s2 = “aa”
         ///Output: False
         /// </summary>
-        private static bool Isomorphic(string s1, string s2)
+        private static bool Isomorphic(string s, string t)
         {
             try
             {
                 //write your code here.
-                return false;
+                Dictionary<char, char> h = new Dictionary<char, char>();
+                if (s.Length != t.Length)
+                {
+                    return false;
+                }
+                int i = 0;
+                while (i < s.Length)
+                {
+                    if (!(h.ContainsKey(s[i]) || h.ContainsValue(t[i])))
+                    {
+                        h.Add(s[i], t[i]);
+                    }
+                    else
+                    {
+                        if (!h.ContainsKey(s[i]) || h[s[i]] != t[i])
+                        {
+                            return false;
+                        }
+                    }
+                    i++;
+                }
+                return true;
             }
             catch (Exception)
             {
