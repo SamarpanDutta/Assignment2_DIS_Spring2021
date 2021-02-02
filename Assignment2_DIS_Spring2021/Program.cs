@@ -195,12 +195,19 @@ namespace Assignment2_DIS_Spring2021
         {
             try
             {
-                //write your code here.
-                
+                Dictionary<int, int> h = new Dictionary<int, int>();
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (h.ContainsKey(target - nums[i]))
+                    {
+                        Console.WriteLine(h[target - nums[i]] + " " + i);
+                        break;
+                    }
+                    h.Add(nums[i], i);
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
 
