@@ -227,12 +227,21 @@ namespace Assignment2_DIS_Spring2021
         {
             try
             {
-                //write your code here.
-                
+                int l = s.Length;
+                Dictionary<int, String> d = new Dictionary<int, String>();
+                for (int i = 0; i < l; i++)
+                {
+                    d.Add(indices[i], s[i].ToString());
+                }
+                string output = "";
+                for (int i = 0; i < l; i++)
+                {
+                    output += d[i];
+                }
+                Console.WriteLine(output);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
