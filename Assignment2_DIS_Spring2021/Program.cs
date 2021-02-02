@@ -112,8 +112,14 @@ namespace Assignment2_DIS_Spring2021
         {
             try
             {
-                //write your code here.
-                
+                int[] result = new int[2 * n];
+                int j = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    result[j++] = nums[i];
+                    result[j++] = nums[i + n];
+                }
+                nums = result;
             }
             catch (Exception)
             {
@@ -168,7 +174,6 @@ namespace Assignment2_DIS_Spring2021
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
