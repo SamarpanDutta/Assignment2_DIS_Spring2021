@@ -36,6 +36,7 @@ namespace Assignment2_DIS_Spring2021
             Console.WriteLine("Question 5");
             string s5 = "korfsucy";
             int[] indices = { 6, 4, 3, 2, 1, 0, 5, 7 };
+            RestoreString(s5, indices);
             Console.WriteLine();
 
             //Question 6
@@ -120,6 +121,7 @@ namespace Assignment2_DIS_Spring2021
                     result[j++] = nums[i];
                     result[j++] = nums[i + n];
                 }
+                Console.Write("The suffled array is: ");
                 for(int i = 0; i < 2 * n; i++)
                 {
                     Console.Write(result[i] + " ");
@@ -128,7 +130,6 @@ namespace Assignment2_DIS_Spring2021
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -175,7 +176,12 @@ namespace Assignment2_DIS_Spring2021
                 {
                     nums[j++] = 0;
                 }
-
+                Console.Write("The array with all 0s at right: ");
+                for(int l = 0; l < nums.Length; l++)
+                {
+                    Console.Write(nums[l] + " ");
+                }
+                Console.WriteLine();
             }
             catch (Exception)
             {
@@ -222,11 +228,10 @@ namespace Assignment2_DIS_Spring2021
                 {
                     total += (h[s] * (h[s] - 1) / 2);
                 }
-                Console.WriteLine(total);
+                Console.WriteLine("The number of cool pairs: " + total);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -257,7 +262,7 @@ namespace Assignment2_DIS_Spring2021
                 {
                     if (h.ContainsKey(target - nums[i]))
                     {
-                        Console.WriteLine(h[target - nums[i]] + " " + i);
+                        Console.WriteLine("positions are (" + h[target - nums[i]] + "," + i + ")");
                         break;
                     }
                     h.Add(nums[i], i);
@@ -267,7 +272,6 @@ namespace Assignment2_DIS_Spring2021
             {
                 throw;
             }
-
         }
 
         //Question 5:
@@ -302,7 +306,7 @@ namespace Assignment2_DIS_Spring2021
                 {
                     output += d[i];
                 }
-                Console.WriteLine(output);
+                Console.WriteLine("The suffled string is : "+ output);
             }
             catch (Exception)
             {
@@ -358,7 +362,6 @@ namespace Assignment2_DIS_Spring2021
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -396,10 +399,6 @@ namespace Assignment2_DIS_Spring2021
                     list.Add(new int[] { items[i, 0], items[i, 1] });
                 }
                 list.Sort((x, y) => { return (x[0] < y[0]) ? -1 : ((x[0] == y[0]) ? ((x[1] <= y[1]) ? 1 : -1) : 1); });
-                foreach(int[] a in list)
-                {
-                    Console.WriteLine("{" + a[0] + " " + a[1] + "}");
-                }
                 int m = list[0][0];
                 int c = 1;
                 int s = list[0][1];
@@ -477,7 +476,6 @@ namespace Assignment2_DIS_Spring2021
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -524,7 +522,6 @@ namespace Assignment2_DIS_Spring2021
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -570,11 +567,10 @@ namespace Assignment2_DIS_Spring2021
                     b = temp;
                 }
                 output = b;
-                Console.WriteLine(output);
+                Console.WriteLine("The total number of unique ways is "+output);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
